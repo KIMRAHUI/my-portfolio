@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import './Stack.css';
 import eggImage from '../assets/egg-boiled.png';
-import notionIcon from '../assets/notion-logo.png';
+import notionIcon from '../assets/Notion-logo.png';
 
 const techStacks = [
   {
