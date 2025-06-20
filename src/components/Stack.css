@@ -1,6 +1,6 @@
 .stack-section {
   width: 100%;
-  min-height:auto;
+  min-height: auto;
   background-color: #f9f9f9;
   padding: 5.25rem 0.8rem 5rem 0.8rem;
   display: flex;
@@ -79,6 +79,19 @@
   transform: translateY(-2px);
 }
 
+/* 익힘 정도별 배경색 */
+.level-soft.stack-card {
+  background-color: #e2e4e0; /* 가장 연한 회색 */
+}
+
+.level-medium.stack-card {
+  background-color:#D3d3d3; /* 중간 회색 */
+}
+
+.level-hard.stack-card {
+  background-color: #bbbdbb; /* 가장 진한 회색 */
+}
+
 .egg-img {
   width: 32px;
   height: 32px;
@@ -86,7 +99,7 @@
   filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.03));
 }
 
-/* 익힘 단계 */
+/* 익힘 단계별 이미지 효과 */
 .level-soft .egg-img {
   filter: brightness(115%) opacity(0.5);
 }
@@ -120,10 +133,10 @@
   white-space: pre-line;
 }
 
-
+/* 모바일 대응 */
 @media (max-width: 480px) {
   .stack-section {
-   max-height: 750px;
+    max-height: 750px;
     padding: 1.2rem 0.6rem 1rem;
     margin-bottom: 0;
   }
