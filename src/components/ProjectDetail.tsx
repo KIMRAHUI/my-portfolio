@@ -7,7 +7,7 @@ interface Project {
   learned: string;
   links: {
     url: string;
-    label: string;
+    label?: string;
     icon: string;
   }[];
 }
