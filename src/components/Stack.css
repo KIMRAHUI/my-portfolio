@@ -1,0 +1,170 @@
+.stack-section {
+  width: 100%;
+  min-height:auto;
+  background-color: #f9f9f9;
+  padding: 5.25rem 0.8rem 5rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+}
+
+.stack-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 1rem;
+}
+
+.stack-group {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 1.2rem;
+}
+
+.stack-category {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #333;
+  padding-left: 0.4rem;
+  border-left: 3px solid #bbb;
+}
+
+.notion-category-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 8px;
+  text-decoration: none;
+}
+
+.notion-icon {
+  width: 14px;
+  height: 14px;
+  opacity: 0.5;
+}
+
+.notion-label {
+  font-size: 0.6rem;
+  color: #666;
+  margin-top: 2px;
+}
+
+/* 카드 그리드 */
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 0.7rem;
+}
+
+/* 카드 디자인 */
+.stack-card {
+  background-color: #e7e3e3;
+  border-radius: 6px;
+  padding: 0.4rem;
+  text-align: center;
+  height: 120px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  border: 1px solid #ccc;
+  transition: transform 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stack-card:hover {
+  transform: translateY(-2px);
+}
+
+.egg-img {
+  width: 32px;
+  height: 32px;
+  margin: 0 auto 0.3rem;
+  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.03));
+}
+
+/* 익힘 단계 */
+.level-soft .egg-img {
+  filter: brightness(115%) opacity(0.5);
+}
+
+.level-medium .egg-img {
+  filter: brightness(100%) opacity(0.85);
+}
+
+.level-hard .egg-img {
+  filter: brightness(100%) opacity(1);
+}
+
+.tech-name {
+  font-weight: 600;
+  font-size: 0.725rem;
+  color: #111;
+  margin-bottom: 0.1rem;
+}
+
+.tech-level {
+  font-size: 0.68rem;
+  color: #555;
+  margin-bottom: 0.2rem;
+}
+
+.tech-description {
+  font-size: 0.6rem;
+  color: #666;
+  line-height: 1.2;
+  padding: 0 0.2rem;
+  white-space: pre-line;
+}
+
+
+@media (max-width: 480px) {
+  .stack-section {
+   max-height: 750px;
+    padding: 1.2rem 0.6rem 1rem;
+    margin-bottom: 0;
+  }
+
+  .stack-title {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .stack-category {
+    font-size: 0.75rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .egg-img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .stack-card {
+    height: 85px;
+    padding: 0.35rem;
+  }
+
+  .stack-grid {
+    gap: 0.5rem;
+  }
+
+  .tech-name {
+    font-size: 0.65rem;
+  }
+
+  .tech-level {
+    font-size: 0.6rem;
+  }
+
+  .tech-description {
+    font-size: 0.425rem;
+  }
+
+  .notion-label {
+    font-size: 0.5rem;
+  }
+}
