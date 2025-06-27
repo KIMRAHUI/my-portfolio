@@ -5,12 +5,14 @@ import Stack from './components/Stack';
 import ProjectSection from './components/ProjectSection';
 import Footer from './components/Footer';
 import ChatToggleButton from './components/ChatToggleButton';
+import ThemeToggleButton from './components/ThemeToggleButton';
+import ResumeQR from './components/ResumeQR'; 
 import './App.css';
 
 function App() {
   return (
     <div className="app-container">
-      <Header /> {/* 내부에서 <a href="#about"> 구조로 이동 */}
+      <Header />
 
       <main className="main-sections">
         <section id="main-video">
@@ -31,6 +33,8 @@ function App() {
       </main>
 
       <Footer />
+      <ResumeQR /> 
+      <ThemeToggleButton />
       <ChatToggleButton />
     </div>
   );

@@ -4,29 +4,32 @@
   gap: 1.5rem;
   padding: 1rem;
   font-size: 0.95rem;
-  color: #444;
+  color: var(--text-color);
 }
 
+/* 제목 스타일 (강제 적용) */
 .section-title {
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 2rem;
   text-align: center;
-  color: #222;
+  color: var(--text-color) !important;  /* 다크모드 강제 반영 */
 }
 
-
+/* 소제목 (예: h3) */
 .detail-section h3 {
   margin-bottom: 0.5rem;
   font-size: 1.1rem;
-  color: #333;
+  color: var(--text-color);
 }
 
 .detail-section p {
   margin: 0.3rem 0;
   line-height: 1.4;
+  color: var(--text-color);
 }
 
+/* 링크는 밝은 블루 유지 */
 a {
   color: #8ccfff;
   text-decoration: underline;

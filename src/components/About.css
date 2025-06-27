@@ -1,22 +1,28 @@
 #about {
-  scroll-margin-top: 80px; 
+  scroll-margin-top: 80px;
 }
 
 .about-section {
   position: relative;
   z-index: 2;
   height: 100vh;
-  background-color: #f9f9f9;
-
+  background-color: var(--section-bg);
   min-width: 440px;
   margin: 0 auto;
   padding: 4rem 1rem 2rem 1rem;
   text-align: center;
-  color: #333;
+  color: var(--text-color);
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--text-color) !important; /*  우선순위 강제 지정 */
+  background: none;                    /*  혹시 모를 배경 제거 */
+  opacity: 1 !important;          /*  혹시 상속된 투명도 제거 */
+}
 
 
 .raccoon-image {
@@ -24,7 +30,7 @@
   height: 180px;
   filter: grayscale(100%);
   margin-bottom: 1.5rem;
-  margin-top: 2rem;  
+  margin-top: 2rem;
   border-radius: 50%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   object-fit: cover;
@@ -39,17 +45,18 @@
   line-height: 1.3;
   margin-bottom: 2rem;
   white-space: pre-line;
+  color: var(--text-color);
 }
 
 .faq-container {
   text-align: left;
   margin: 0 auto;
-  max-width: 600px; /* 가로폭 제한 */
-  width: 90%;        /* 반응형 대응 */
+  max-width: 600px;
+  width: 90%;
 }
 
 .faq-item {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--muted-text-color);
   padding: 0.75rem 0;
   cursor: pointer;
 }
@@ -64,19 +71,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #444;
+  color: var(--text-color);
 }
 
 .faq-question:focus {
-  outline: 2px solid #666;
+  outline: 2px solid var(--text-color);
 }
 
 .arrow {
   font-size: 0.8rem;
+  color: var(--text-color);
 }
 
 .faq-answer {
   padding: 0.5rem 0 0 1rem;
-  color: #666;
+  color: var(--muted-text-color);
   font-size: 0.95rem;
 }

@@ -13,17 +13,29 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
+/* 🌙 다크모드: 헤더 배경 */
+[data-theme='dark'] .header {
+  background-color: #111; /* 어두운 배경 */
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+}
+
+/* 로고 텍스트 */
 .logo {
   font-size: 1.8rem;
   font-weight: 700;
   color: #333;
 }
 
+[data-theme='dark'] .logo {
+  color: #f1f1f1;
+}
+
 .logo-image {
-  width: 120px; /* 로고 크기 조정 */
+  width: 120px;
   height: auto;
 }
 
+/* 네비게이션 */
 .nav {
   display: flex;
   gap: 1rem;
@@ -37,5 +49,14 @@
 }
 
 .nav a:hover {
-  color: #f3cd3e; /* Highlight color */
+  color: #f3cd3e; /* 하이라이트 색상 */
+}
+
+/* 🌙 다크모드: 네비게이션 링크 */
+[data-theme='dark'] .nav a {
+  color: #f1f1f1;
+}
+
+[data-theme='dark'] .nav a:hover {
+  color: #f3cd3e;
 }

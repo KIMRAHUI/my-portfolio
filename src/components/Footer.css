@@ -1,12 +1,17 @@
+/* 🌗 공통 푸터 스타일 */
 .footer {
   background-color: #f1f1f1;
   font-size: 0.85rem;
-  color: #444;
+  color: var(--text-color);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 1rem 1.2rem 0.6rem 1.2rem;
   box-sizing: border-box;
+}
+
+[data-theme="dark"] .footer {
+  background-color: #111;
 }
 
 .footer-content {
@@ -25,12 +30,13 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  color: var(--text-color);
 }
 
 .footer-section h4 {
   font-size: 0.95rem;
   margin-bottom: 0.4rem;
-  color: #111;
+  color: var(--text-color);
   border-left: 4px solid #999;
   padding-left: 0.5rem;
   white-space: nowrap;
@@ -48,10 +54,11 @@
 .footer-section li {
   font-size: 0.82rem;
   white-space: nowrap;
+  color: var(--text-color);
 }
 
 .footer-section a {
-  color: #444;
+  color: var(--text-color);
   text-decoration: none;
 }
 
@@ -64,6 +71,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  color: var(--text-color);
 }
 
 .footer-family-site select {
@@ -76,31 +84,41 @@
   width: 150px;
   min-width: 150px;
   max-width: 150px;
+  color: #111;
+}
+
+[data-theme="dark"] .footer-family-site select {
+  background-color: #222;
+  color: #f1f1f1;
+  border: 1px solid #555;
 }
 
 .family-label {
   font-size: 0.85rem;
   font-weight: 500;
+  color: var(--text-color);
 }
 
 /* ⬇️ 저작권 영역 */
 .footer-bottom {
   text-align: center;
   font-size: 0.75rem;
-  color: #666;
+  color: var(--text-color);
   margin-top: 0.8rem;
 }
 
 /* 📱 태블릿 이하 반응형 */
 @media (max-width: 768px) {
   .footer-content {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.2rem;
+    flex-direction: row; /* ✅ 가로 유지 */
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
   }
 
   .footer-section {
-    width: 100%;
+    flex: 1 1 30%;
+    min-width: 160px;
   }
 
   .footer-section h4 {
@@ -118,7 +136,7 @@
 
   .footer-bottom {
     margin-top: 1rem;
-    text-align: left;
+    text-align: center;
   }
 }
 
@@ -127,6 +145,18 @@
   .footer {
     font-size: 0.78rem;
     padding: 1rem;
+  }
+
+  .footer-content {
+    flex-direction: row; /* ✅ 여전히 가로 정렬 유지 */
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.8rem;
+  }
+
+  .footer-section {
+    flex: 1 1 100px;
+    min-width: 140px;
   }
 
   .footer-section h4 {
@@ -146,5 +176,6 @@
 
   .footer-bottom {
     font-size: 0.7rem;
+    text-align: center;
   }
 }

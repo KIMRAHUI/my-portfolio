@@ -1,31 +1,69 @@
-html, body, #root {
+/*  전역 색상 변수 정의 - index.css 또는 App.css 상단 */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --section-bg: #f9f9f9;
+  --card-bg: #f2f2f2;
+  --muted-text-color: #666666; /* 추가 */
+  --border-color: #cccccc;     /* 선택적으로 추가 */
+}
+
+[data-theme='dark'] {
+  --bg-color: #121212;
+  --text-color: #f1f1f1;
+  --section-bg: #1e1e1e;
+  --card-bg: #2a2a2a;
+  --muted-text-color: #bbbbbb;  /* 밝은 회색으로 변경 */
+  --border-color: #444444;
+}
+
+
+/*  전역 적용 - 기본 배경/글자색 */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
   margin: 0;
   padding: 0;
-  height: 100%;
-  overflow-x: hidden;
+  font-family: 'Pretendard', sans-serif;
 }
 
-.app-container {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
-  height: auto;
-  min-height: 100vh;
-}
 
-.main-container {
-  min-height: 300vh; /* ✅ scrollY 작동을 위해 반드시 필요 */
-}
-
-#main-video {
+/* MainVideo 컴포넌트 */
+.main-video {
+  background-color: var(--bg-color);
+  color: var(--text-color);
   height: 100vh;
-  background-color: #000;
   position: relative;
-  z-index: 1;
+  overflow: hidden;
 }
 
-#about {
-  background-color: #f9f9f9;
-  min-height: 100vh;
-  z-index: 2;
-  position: relative;
+/*  About (자기소개) 컴포넌트 */
+.about-section {
+  background-color: var(--section-bg);
+  color: var(--text-color);
+  padding: 4rem 1rem;
+}
+
+/*  Stack 컴포넌트 */
+.stack-section {
+  background-color: var(--section-bg);
+  color: var(--text-color);
+  padding: 5.25rem 0.8rem 5rem 0.8rem;
+}
+
+/*  ProjectSection 컴포넌트 */
+.project-section {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 4rem 1rem;
+}
+
+/*  Footer 컴포넌트 */
+.footer {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 2rem 1rem;
+  font-size: 0.85rem;
+  text-align: center;
 }

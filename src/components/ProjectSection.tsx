@@ -25,7 +25,6 @@ import my11 from '../assets/MyCar360/MyCar360_11.jpg';
 import my12 from '../assets/MyCar360/MyCar360_12.jpg';
 import my13 from '../assets/MyCar360/MyCar360_13.jpg';
 import my14 from '../assets/MyCar360/MyCar360_14.jpg';
-import my15 from '../assets/MyCar360/MyCar360_15.jpg';
 
 import filmThumb from '../assets/FilmDream/thumbnail.jpg';
 import film1 from '../assets/FilmDream/FilmDream_1.jpg';
@@ -41,7 +40,6 @@ import film10 from '../assets/FilmDream/FilmDream_10.jpg';
 import film11 from '../assets/FilmDream/FilmDream_11.jpg';
 import film12 from '../assets/FilmDream/FilmDream_12.jpg';
 import film13 from '../assets/FilmDream/FilmDream_13.jpg';
-import film14 from '../assets/FilmDream/FilmDream_14.jpg';
 
 import conThumb from '../assets/Continental/thumbnail.jpg';
 import con1 from '../assets/Continental/Continental_1.jpg';
@@ -56,16 +54,16 @@ import con9 from '../assets/Continental/Continental_9.jpg';
 import con10 from '../assets/Continental/Continental_10.jpg';
 import con11 from '../assets/Continental/Continental_11.jpg';
 import con12 from '../assets/Continental/Continental_12.jpg';
-import con13 from '../assets/Continental/Continental_13.jpg';
-import con14 from '../assets/Continental/Continental_14.jpg';
+
+import myPortfolioThumb from '../assets/MyPortfolio/thumbnail.png';
 
 const projects = [
   {
     id: 1,
     title: 'MyCar360',
     thumbnail: myThumb,
-    slides: [my1, my2, my3, my4, my5, my6, my7, my8, my9, my10, my11, my12, my13, my14, my15],
-    stack: 'React, TypeScript, Supabase, Express',
+    slides: [my1, my2, my3, my4, my5, my6, my7, my8, my9, my10, my11, my12, my13, my14],
+    stack: 'React, Supabase, Express.js (Node.js)',
     summary: '360도 차량 점검 및 정비 이력 관리 플랫폼입니다.',
     difficulty: '점검 이력과 추천 주기를 비교해서 다음 점검 시기를 예측하는 기능이 처음에는 막막하게 느껴졌습니다. 어떤 기준으로 계산할지 정하는 데 어려움이 있었습니다.',
     learned: '각 점검 항목에 주기 데이터를 추가하고, 마지막 점검일 기준으로 다음 점검 시점을 계산하는 로직을 백엔드에서 구현하며 하나씩 정리해 나갔습니다.',
@@ -79,8 +77,8 @@ const projects = [
     id: 2,
     title: 'FilmDream',
     thumbnail: filmThumb,
-    slides: [film1, film2, film3, film4, film5, film6, film7, film8, film9, film10, film11, film12, film13, film14],
-    stack: 'React, Supabase, Chart.js',
+    slides: [film1, film2, film3, film4, film5, film6, film7, film8, film9, film10, film11, film12, film13],
+    stack: 'React, Supabase, Express.js (Node.js)',
     summary: 'YTS API 기반의 영화 리뷰 및 통계 서비스입니다.',
     difficulty: '리뷰 기능에서 로그인한 사용자에 따라 수정/삭제 버튼을 제어하는 부분이 처음엔 헷갈렸고, 권한 처리도 명확하게 되지 않아 고민이 많았습니다.',
     learned: 'Supabase에서 사용자 UUID를 활용해 작성자 여부를 확인하고, 조건에 따라 버튼을 다르게 보여주는 방식으로 문제를 차분히 해결했습니다.',
@@ -94,8 +92,8 @@ const projects = [
     id: 3,
     title: 'Continental',
     thumbnail: conThumb,
-    slides: [con1, con2, con3, con4, con5, con6, con7, con8, con9, con10, con11, con12, con13, con14],
-    stack: 'React, Leaflet, Node, Express',
+    slides: [con1, con2, con3, con4, con5, con6, con7, con8, con9, con10, con11, con12],
+    stack: 'React, Supabase, Express.js (Node.js)',
     summary: '존윅 세계관 기반 호텔 예약 시스템입니다.',
     difficulty: '요원 전용 시설에 비밀 코드를 입력해 접근하도록 만드는 흐름이 생각보다 복잡하게 느껴졌고, 사용자 경험이 자연스럽지 않다는 생각이 들었습니다.',
     learned: '입력 성공 여부를 상태로 관리하고, 그에 따라 페이지 흐름과 버튼 노출을 조정하면서 점차 원하는 흐름을 구현해갈 수 있었습니다.',
@@ -103,6 +101,19 @@ const projects = [
       { url: 'https://github.com/KIMRAHUI/johnwick-continental', label: 'Frontend', icon: githubLogo },
       { url: 'https://github.com/KIMRAHUI/johnwick-board-backend', label: 'Backend', icon: githubLogo },
       { url: 'https://johnwick-continental.vercel.app/', label: 'Vercel', icon: vercelLogo },
+    ],
+  },
+  {
+    id: 4,
+    title: 'My Portfolio',
+    thumbnail: myPortfolioThumb,
+    slides: [], //  슬라이드 없음
+    stack: 'React, TypeScript',
+    summary: '개인 프로젝트와 기술 스택을 소개하는 포트폴리오 웹사이트로서, 탭기반의 프로젝트 전환과 깔끔한 섹션 구성을 중심으로 제작되었습니다.',
+    difficulty: '24시간 상담이 가능한 챗봇 기능을 추가하고자 했습니다. 하지만 페이지 구성 요소들과 충돌없이 언제든 접근 가능하면서 UI를 방해하지 않는 인터페이스를 구현하는데 어려움이 있었습니다.',
+    learned: '하단 우측 고정 토글 버튼을 클릭하면 챗봇이 조건부로 열리도록 구현하고, useState,z-index,fixed 속성을 활용해 다른 UI와 충돌없이 상시 접근가능하게 구성했습니다.',
+    links: [
+      { url: 'https://github.com/KIMRAHUI/my-portfolio', label: 'GitHub', icon: githubLogo },
     ],
   },
 ];
@@ -121,29 +132,31 @@ export default function ProjectSection() {
             src={selectedProject.thumbnail}
             alt={`${selectedProject.title} 썸네일`}
             className="main-thumbnail"
-            onClick={() => setShowViewer(true)}
+            onClick={() => selectedProject.slides.length > 0 && setShowViewer(true)} 
           />
-          <div className="slide-thumbnails">
-            <Swiper
-              spaceBetween={8}
-              slidesPerView={'auto'}
-              freeMode={true}
-              grabCursor={true}
-              autoplay={{ delay: 2500, disableOnInteraction: false }}
-              modules={[Autoplay]}
-              className="thumbnail-swiper"
-            >
-              {selectedProject.slides.map((src, idx) => (
-                <SwiperSlide key={idx} style={{ width: 90 }}>
-                  <img
-                    src={src}
-                    className="slide-thumb"
-                    onClick={() => setShowViewer(true)}
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
+          {selectedProject.slides.length > 0 && (
+            <div className="slide-thumbnails">
+              <Swiper
+                spaceBetween={8}
+                slidesPerView={'auto'}
+                freeMode={true}
+                grabCursor={true}
+                autoplay={{ delay: 2500, disableOnInteraction: false }}
+                modules={[Autoplay]}
+                className="thumbnail-swiper"
+              >
+                {selectedProject.slides.map((src, idx) => (
+                  <SwiperSlide key={idx} style={{ width: 90 }}>
+                    <img
+                      src={src}
+                      className="slide-thumb"
+                      onClick={() => setShowViewer(true)}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+          )}
         </div>
 
         <div className="project-right">
