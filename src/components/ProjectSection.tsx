@@ -82,8 +82,8 @@ const projects = [
     slides: [my1, my2, my3, my4, my5, my6, my7, my8, my9, my10, my11, my12, my13, my14, my15, my16, my17, my18],
     stack: 'React, Supabase, Express.js (Node.js)',
     summary: '360도 차량 점검 및 정비 이력 관리 플랫폼입니다.',
-    difficulty: '점검 이력과 추천 주기를 비교해서 다음 점검 시기를 예측하는 기능이\n 처음에는 막막했습니다. 어떤 기준으로 계산할지 정하는 데 어려움이 있었습니다.',
-    learned: '각 점검 항목에 주기 데이터를 추가하고,\n 마지막 점검일 기준으로 다음 점검 시점을 계산하는 로직을 백엔드에서 구현하며\n 하나씩 정리해 나갔습니다.',
+    difficulty: '점검 이력과 추천 주기를 비교해서 다음 점검 시기를 예측하는 기능이 처음에는 막막했습니다. 어떤 기준으로 계산할지 정하는 데 어려움이 있었습니다.',
+    learned: '각 점검 항목에 주기 데이터를 추가하고, 마지막 점검일 기준으로 다음 점검 시점을 계산하는 로직을 백엔드에서 구현하며 하나씩 정리해 나갔습니다.',
     links: [
       { url: 'https://github.com/KIMRAHUI/mycar360-frontend', label: 'Frontend', icon: githubLogo },
       { url: 'https://github.com/KIMRAHUI/mycar360-backend', label: 'Backend', icon: githubLogo },
@@ -126,9 +126,9 @@ const projects = [
     thumbnail: myPortfolioThumb,
     slides: [],
     stack: 'React, TypeScript',
-    summary: '개인 프로젝트와 기술 스택을 소개하는 포트폴리오 웹사이트로서,\n 탭기반의 프로젝트 전환과 깔끔한 섹션 구성을 중심으로 제작되었습니다.',
-    difficulty: '24시간 상담이 가능한 챗봇 기능을 추가하고자 했습니다.\n 하지만 페이지 구성 요소들과 충돌없이 언제든 접근 가능하면서 UI를 방해하지 않는\n 인터페이스를 구현하는데 어려움이 있었습니다.',
-    learned: '하단 우측 고정 토글 버튼을 클릭하면\n 챗봇이 조건부로 열리도록 구현하고,useState,z-index,fixed 속성을 활용해 \n다른 UI와 충돌없이 상시 접근가능하게 구성했습니다.',
+    summary: '개인 프로젝트와 기술 스택을 소개하는 포트폴리오 웹사이트로서, 탭기반의 프로젝트 전환과 깔끔한 섹션 구성을 중심으로 제작되었습니다.',
+    difficulty: '24시간 상담이 가능한 챗봇 기능을 추가하고자 했습니다.\n 하지만 페이지 구성 요소들과 충돌없이 언제든 접근 가능하면서 UI를 방해하지 않는 인터페이스를 구현하는데 어려움이 있었습니다.',
+    learned: '하단 우측 고정 토글 버튼을 클릭시 챗봇이 조건부로 열리도록 구현하고,\nuseState,z-index,fixed 속성을 활용해 다른 UI와 충돌없이 접근가능하게 구성했습니다.',
     links: [
       { url: 'https://github.com/KIMRAHUI/my-portfolio', label: 'GitHub', icon: githubLogo },
     ],
