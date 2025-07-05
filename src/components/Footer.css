@@ -1,4 +1,4 @@
-/* 🌗 공통 푸터 스타일 */
+/* 전체 푸터 영역 */
 .footer {
   background-color: #f1f1f1;
   font-size: 0.85rem;
@@ -10,38 +10,46 @@
   box-sizing: border-box;
 }
 
+/* 다크모드 푸터 배경 */
 [data-theme="dark"] .footer {
   background-color: #111;
 }
 
+/* 푸터 내부 콘텐츠 래퍼 */
 .footer-content {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
-  gap: 1.5rem;
-  max-width: 1200px;
+  gap: 2rem;
+  max-width: 960px;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
+/* 푸터 섹션 단위 */
 .footer-section {
-  flex: 1;
-  min-width: 220px;
+  flex: 0 0 auto;
+  min-width: 180px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   color: var(--text-color);
 }
 
-.footer-section h4 {
+/* 푸터 섹션 제목 (아이콘 + 텍스트) */
+.footer-title {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
   font-size: 0.95rem;
-  margin-bottom: 0.4rem;
+  font-weight: 600;
   color: var(--text-color);
-  border-left: 4px solid #999;
-  padding-left: 0.5rem;
+  margin-bottom: 0.4rem;
   white-space: nowrap;
 }
 
+/* 푸터 링크 목록 */
 .footer-section ul {
   list-style: none;
   display: flex;
@@ -51,12 +59,14 @@
   margin: 0;
 }
 
+/* 푸터 목록 항목 */
 .footer-section li {
   font-size: 0.82rem;
   white-space: nowrap;
   color: var(--text-color);
 }
 
+/* 푸터 링크 스타일 */
 .footer-section a {
   color: var(--text-color);
   text-decoration: none;
@@ -66,7 +76,7 @@
   text-decoration: underline;
 }
 
-/* ✅ 패밀리사이트 */
+/* 프로젝트 모음 (패밀리사이트) */
 .footer-family-site {
   display: flex;
   flex-direction: column;
@@ -74,6 +84,7 @@
   color: var(--text-color);
 }
 
+/* 패밀리사이트 셀렉트 박스 */
 .footer-family-site select {
   margin-top: 0.4rem;
   padding: 0.35rem 0.5rem;
@@ -87,19 +98,14 @@
   color: #111;
 }
 
+/* 다크모드 셀렉트 박스 */
 [data-theme="dark"] .footer-family-site select {
   background-color: #222;
   color: #f1f1f1;
   border: 1px solid #555;
 }
 
-.family-label {
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--text-color);
-}
-
-/* ⬇️ 저작권 영역 */
+/* 저작권 표시 영역 */
 .footer-bottom {
   text-align: center;
   font-size: 0.75rem;
@@ -107,40 +113,9 @@
   margin-top: 0.8rem;
 }
 
-/* 📱 태블릿 이하 반응형 */
-@media (max-width: 768px) {
-  .footer-content {
-    flex-direction: row; /* ✅ 가로 유지 */
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 1rem;
-  }
 
-  .footer-section {
-    flex: 1 1 30%;
-    min-width: 160px;
-  }
 
-  .footer-section h4 {
-    font-size: 0.9rem;
-  }
-
-  .footer-section li {
-    font-size: 0.8rem;
-  }
-
-  .footer-family-site select {
-    width: 150px;
-    max-width: 150px;
-  }
-
-  .footer-bottom {
-    margin-top: 1rem;
-    text-align: center;
-  }
-}
-
-/* 📱 모바일 환경 (430px 이하) */
+/* 모바일 환경 대응 */
 @media (max-width: 430px) {
   .footer {
     font-size: 0.78rem;
@@ -148,18 +123,16 @@
   }
 
   .footer-content {
-    flex-direction: row; /* ✅ 여전히 가로 정렬 유지 */
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 0.8rem;
+    justify-content: center;
+    gap: 1rem;
   }
 
   .footer-section {
-    flex: 1 1 100px;
+    flex: 0 0 auto;
     min-width: 140px;
   }
 
-  .footer-section h4 {
+  .footer-title {
     font-size: 0.85rem;
   }
 

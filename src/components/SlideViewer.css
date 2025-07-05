@@ -2,21 +2,21 @@
 #projects {
   scroll-margin-top: 80px; 
 }
-/* 📌 전체 배경 오버레이 */
+/*  전체 배경 오버레이 */
 .slide-viewer-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.65); /* ✅ 반투명 검정 */
+  background: rgba(0, 0, 0, 0.65); /*  반투명 검정 */
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 2000;
 }
 
-/* 📘 책 넘김 뷰어 감싸는 컨테이너 */
+/*  책 넘김 뷰어 감싸는 컨테이너 */
 .slide-viewer-container {
   width: 100%;
   max-width: 100vw;
@@ -28,7 +28,7 @@
   align-items: center;
 }
 
-/* 📚 FlipBook 전체 */
+/*  FlipBook 전체 */
 .book-flip {
   width: 100%;
   height: 100%;
@@ -37,7 +37,7 @@
   overflow: hidden;
 }
 
-/* 📄 각 페이지 영역 */
+/*  각 페이지 영역 */
 .page {
   width: 100%;
   height: 100%;
@@ -47,7 +47,7 @@
   align-items: center;
 }
 
-/* 🖼️ 페이지 안의 슬라이드 이미지 */
+/*  페이지 안의 슬라이드 이미지 */
 .page img {
   width: 100%;
   height: 100%;

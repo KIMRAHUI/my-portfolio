@@ -1,36 +1,40 @@
+/* About 섹션 전체 설정 */
 #about {
   scroll-margin-top: 80px;
 }
 
+/* About 전체 레이아웃 */
 .about-section {
   position: relative;
   z-index: 2;
-  height: 100vh;
   background-color: var(--section-bg);
   min-width: 440px;
+  min-height: 115vh;
   margin: 0 auto;
-  padding: 4rem 1rem 2rem 1rem;
+  padding: 3rem 1rem 2rem;
   text-align: center;
   color: var(--text-color);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
+
+/* About 섹션 제목 */
 .section-title {
   font-size: 2rem;
   font-weight: 700;
+  margin-top: 0;
   margin-bottom: 2rem;
-  color: var(--text-color) !important; /*  우선순위 강제 지정 */
-  background: none;                    /*  혹시 모를 배경 제거 */
-  opacity: 1 !important;          /*  혹시 상속된 투명도 제거 */
+  text-align: center;
+  color: var(--text-color) !important;
 }
 
-
+/* 상단 너구리 이미지 */
 .raccoon-image {
   width: 180px;
   height: 180px;
   filter: grayscale(100%);
-  margin-bottom: 1.5rem;
   margin-top: 2rem;
+  margin-bottom: 1.5rem;
   border-radius: 50%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   object-fit: cover;
@@ -40,51 +44,111 @@
   transition: transform 0.3s ease-in-out;
 }
 
+/* 자기소개 문단 */
 .about-intro {
-  font-size: 1rem;
-  line-height: 1.3;
-  margin-bottom: 2rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 4rem;
   white-space: pre-line;
   color: var(--text-color);
+  max-width: 640px;
+  width: 92%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+/* FAQ 전체 컨테이너 */
 .faq-container {
   text-align: left;
   margin: 0 auto;
-  max-width: 600px;
-  width: 90%;
+  max-width: 520px;
+  width: 92%;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
+/* 질문-답변 블록 */
 .faq-item {
-  border-bottom: 1px solid var(--muted-text-color);
-  padding: 0.75rem 0;
+  padding: 0.65rem 0;
   cursor: pointer;
 }
 
+/* 질문 버튼 */
 .faq-question {
-  font-weight: 600;
-  background: none;
-  border: none;
-  width: 100%;
-  text-align: left;
-  font-size: 1rem;
+  all: unset;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 400;
   color: var(--text-color);
+  cursor: pointer;
+  border-bottom: 2px solid var(--text-color);
+  margin-bottom: 0.35rem;
 }
 
+/* 키보드 포커스 시 아웃라인 제거 */
 .faq-question:focus {
-  outline: 2px solid var(--text-color);
+  outline: none;
 }
 
+/* 질문 오른쪽 화살표 */
 .arrow {
   font-size: 0.8rem;
   color: var(--text-color);
 }
 
+/* 답변 영역 */
 .faq-answer {
-  padding: 0.5rem 0 0 1rem;
+  padding: 0.65rem 0 0.8rem 1rem;
   color: var(--muted-text-color);
-  font-size: 0.95rem;
+  font-size: 0.8rem;
+  white-space: pre-line;
+  text-align: left;
+  border-bottom: 1px solid var(--muted-text-color);
+}
+
+/* 모바일 스타일 */
+@media (max-width: 480px) {
+  /* About 레이아웃 조정 */
+  .about-section {
+    height: auto !important;
+    min-height: 35rem;
+    padding-bottom: 1.5rem;
+  }
+
+  /* 자기소개 텍스트 크기 축소 */
+  .about-intro {
+    font-size: 0.82rem;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+  }
+
+  /* FAQ 좌우 여백 축소 */
+  .faq-container {
+    padding: 0 0.4rem;
+  }
+
+  /* 질문 버튼 크기 축소 */
+  .faq-question {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 0.3rem;
+    border-bottom: 2px solid var(--text-color);
+  }
+
+  /* 답변 텍스트 크기 축소 */
+  .faq-answer {
+    font-size: 0.78rem;
+    line-height: 1.5;
+    padding: 0.4rem 0 0.6rem 0.8rem;
+    border-bottom: 1px solid var(--muted-text-color);
+  }
+
+  /* 제목 폰트 크기 축소 */
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
 }

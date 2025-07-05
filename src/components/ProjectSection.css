@@ -1,48 +1,58 @@
-/* 상위 wrapper로 전체 가운데 정렬 유지 */
+/* 프로젝트 전체 섹션 영역 */
 .projects-wrapper {
   width: 100%;
-  padding: 3rem 1rem;
+  min-height: 115vh;
+  padding: 3rem 1rem 2rem ;
+  margin-top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: var(--text-color);
+  background-color: var(--section-bg);
 }
 
+/* 섹션 타이틀 스타일 */
 .section-title {
   font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
   text-align: center;
-  color: var(--text-color) !important; /* 다크모드 강제 반영 */
+  color: var(--text-color) !important;
 }
 
+/* 프로젝트 좌우 구조 wrapper */
 .project-section {
   display: flex;
+  flex-direction: column;
   align-items: center;
   width: 100%;
   gap: 2rem;
   color: var(--text-color);
+  background-color: var(--section-bg);
 }
 
+/* 썸네일 + 슬라이드 감싸는 영역 */
 .project-left {
-  flex: 2;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* 메인 썸네일 이미지 */
 .main-thumbnail {
   width: 100%;
-  max-width: 500px;
-  height: 280px; /* MyCar360 기준 높이 */
-  object-fit: cover; /* 이미지 비율이 다르더라도 크롭하여 맞춤 */
+  max-width: 640px;
+  height: 300px;
+  object-fit: cover;
   cursor: pointer;
   border-radius: 0.75rem;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
   margin-bottom: 1rem;
 }
 
-
+/* 슬라이드 썸네일 전체 wrapper */
 .slide-thumbnails {
   width: 100%;
   max-width: 500px;
@@ -51,6 +61,7 @@
   margin-bottom: 1rem;
 }
 
+/* Swiper 스타일 지정 */
 .thumbnail-swiper {
   width: 100%;
 }
@@ -59,6 +70,7 @@
   width: 90px;
 }
 
+/* 슬라이드 썸네일 개별 이미지 */
 .slide-thumb {
   width: 100%;
   height: 60px;
@@ -73,14 +85,21 @@
   transform: scale(1.05);
 }
 
+/* 오른쪽 상세 정보 영역 */
 .project-right {
-  flex: 1.5;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
   color: var(--text-color);
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
 
+/* 탭 버튼 감싸는 영역 */
 .project-tabs {
   display: flex;
   gap: 0.75rem;
@@ -89,6 +108,7 @@
   flex-wrap: wrap;
 }
 
+/* 탭 버튼 기본 스타일 */
 .tab-button {
   padding: 0.6rem 1.5rem;
   border: 2px solid transparent;
@@ -102,11 +122,13 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
+/* 다크모드 탭 버튼 */
 [data-theme='dark'] .tab-button {
   background-color: #333;
   color: #f1f1f1;
 }
 
+/* 탭 버튼 hover */
 .tab-button:hover {
   background-color: #e9e9e9;
   transform: translateY(-1px);
@@ -116,6 +138,7 @@
   background-color: #444;
 }
 
+/* 활성 탭 버튼 */
 .tab-button.active {
   background-color: #222;
   color: white;
@@ -124,6 +147,7 @@
   transform: scale(1.05);
 }
 
+/* 링크 버튼 전체 wrapper */
 .project-links {
   display: flex;
   gap: 1.2rem;
@@ -133,6 +157,7 @@
   flex-wrap: wrap;
 }
 
+/* 개별 링크 버튼 스타일 */
 .project-link {
   display: flex;
   flex-direction: column;
@@ -147,12 +172,14 @@
   transform: scale(1.08);
 }
 
+/* 링크 아이콘 이미지 */
 .link-icon {
   width: 28px;
   height: 28px;
   margin-bottom: 0.2rem;
 }
 
+/* 링크 텍스트 라벨 */
 .link-label {
   margin-top: 0.2rem;
   font-weight: 500;
@@ -160,7 +187,12 @@
   color: var(--text-color);
 }
 
-/* 반응형 */
+/* ProjectDetail 내 텍스트 줄바꿈 적용 */
+.detail-section p {
+  white-space: pre-line;
+}
+
+/* 반응형 스타일 - 태블릿 이하 */
 @media (max-width: 768px) {
   .section-wrapper {
     padding: 2rem 1rem;
@@ -187,14 +219,15 @@
     height: 50px;
   }
 
- .project-tabs {
+  .project-tabs {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); 
+    grid-template-columns: repeat(4, 1fr);
     gap: 0.5rem;
     justify-content: center;
     margin-bottom: 1.5rem;
   }
-    .tab-button {
+
+  .tab-button {
     width: 100%;
     padding: 0.5rem 0.2rem;
     font-size: 0.75rem;
@@ -220,7 +253,7 @@
   }
 
   .detail-section p {
-    font-size: 0.85rem;
-    line-height: 1.4;
+    font-size: 0.75rem;
+    line-height: 1;
   }
 }

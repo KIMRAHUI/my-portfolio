@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './ChatBot.css';
 
+/* 사전 정의된 질문 키워드와 응답 */
 const predefinedAnswers: Record<string, string> = {
-  '학력': '메이필드호텔전문학교 식음료학과 졸업 후, 경희사이버대학교 글로벌경영학과를 2025년 8월에 졸업하였습니다.🎓',
+  '학력': '메이필드호텔전문학교 식음료학과 졸업 후, 경희사이버대학교 글로벌경영학과를 2024년 8월에 졸업하였습니다.🎓',
   '경력': '에스씨케이컴퍼니(2017~2018), 케이엘이엔씨(2020~2024)에서 고객 응대 및 관리 업무를 수행했습니다. IT 분야는 신입으로 도전 중입니다.💼',
   '성격': '계획적으로 움직이며 꼼꼼하게 일처리를 하는 편입니다. 완벽하게 해내려는 성향이 있어 때로는 시간이 오래 걸리기도 했지만, 작은 단위로 나누어 빠르게 실행하고 피드백을 받아 개선하는 방식으로 보완해왔습니다.🧠',
   '직무전환': '다양한 프로젝트를 진행하며 단순히 보이는 화면보다 사용자 흐름과 데이터 연결이 설계된 화면의 중요성을 느꼈습니다. 구조 설계와 흐름 중심의 개발에 더 흥미를 느껴 프론트엔드 직무로 전환을 결심하게 되었습니다.🔄',
@@ -19,17 +20,30 @@ const predefinedAnswers: Record<string, string> = {
 
 현재 보유한 자격증 외에도 IT 기반 역량 강화를 위해 관련 자격 시험을 준비하고 있으며,  
 앞으로도 꾸준히 학습하고 성장하는 자세로 실무에 임하고자 합니다.📜`,
-
   '연락': '추가 궁금하신 사항은 언제든지 이메일(rho0531@naver.com)로 문의 주시면 성실히 답변드리겠습니다.✉️',
 };
 
-
+/* ChatBot 컴포넌트 정의 */
 export default function ChatBot() {
+  /* 메시지 상태 */
   const [messages, setMessages] = useState([
     { sender: 'bot', text: '안녕하세요! 포트폴리오 관련 궁금하신 점을 물어보세요 😊' },
   ]);
+
+  /* 입력 필드 상태 */
   const [input, setInput] = useState('');
 
+  /* 자동 스크롤을 위한 ref */
+  const endRef = useRef<HTMLDivElement | null>(null);
+
+  /* 메시지 변화 시 스크롤 아래로 이동 */
+  useEffect(() => {
+    if (endRef.current) {
+      endRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages]);
+
+  /* 전송 처리 함수 */
   const handleSend = () => {
     if (!input.trim()) return;
 
@@ -45,19 +59,24 @@ export default function ChatBot() {
 
     const botMessage = { sender: 'bot', text: botResponse };
 
-    setMessages([...messages, userMessage, botMessage]);
+    setMessages(prev => [...prev, userMessage, botMessage]);
     setInput('');
   };
 
   return (
     <div className="chatbot-container">
+      {/* 메시지 출력 영역 */}
       <div className="chatbot-window">
         {messages.map((msg, idx) => (
           <div key={idx} className={`message ${msg.sender}`}>
             {msg.text}
           </div>
         ))}
+        {/* 자동 스크롤 이동용 엘리먼트 */}
+        <div ref={endRef} />
       </div>
+
+      {/* 입력창 + 버튼 */}
       <div className="chatbot-input">
         <input
           type="text"

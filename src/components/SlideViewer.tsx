@@ -12,6 +12,7 @@ interface SlideViewerProps {
 export default function SlideViewer({ slides, onClose }: SlideViewerProps) {
   const [dimensions, setDimensions] = useState({ width: 900, height: 600 });
 
+  /* 화면 크기에 따라 슬라이드 크기 조절*/
   useEffect(() => {
     const isMobile = window.innerWidth <= 768;
 
@@ -31,8 +32,10 @@ export default function SlideViewer({ slides, onClose }: SlideViewerProps) {
   return (
     <div className="slide-viewer-overlay">
       <div className="slide-viewer-container">
+        {/* 닫기 버튼 */}
         <button className="close-btn" onClick={onClose}>×</button>
 
+        {/* 슬라이드북 구성 */}
         <HTMLFlipBook
           width={dimensions.width}
           height={dimensions.height}

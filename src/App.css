@@ -1,24 +1,22 @@
-/*  전역 색상 변수 정의 - index.css 또는 App.css 상단 */
 :root {
-  --bg-color: #ffffff;
+  --bg-color: #f9f9f9;
   --text-color: #111111;
   --section-bg: #f9f9f9;
   --card-bg: #f2f2f2;
-  --muted-text-color: #666666; /* 추가 */
-  --border-color: #cccccc;     /* 선택적으로 추가 */
+  --muted-text-color: #666666;
+  --border-color: #cccccc;
 }
 
 [data-theme='dark'] {
-  --bg-color: #121212;
+  --bg-color: #1e1e1e;
   --text-color: #f1f1f1;
   --section-bg: #1e1e1e;
   --card-bg: #2a2a2a;
-  --muted-text-color: #bbbbbb;  /* 밝은 회색으로 변경 */
+  --muted-text-color: #bbbbbb;
   --border-color: #444444;
 }
 
-
-/*  전역 적용 - 기본 배경/글자색 */
+/* 배경, 글자색 전역 적용 */
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -28,8 +26,7 @@ body {
   font-family: 'Pretendard', sans-serif;
 }
 
-
-/* MainVideo 컴포넌트 */
+/* 메인 영상 영역 */
 .main-video {
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -38,28 +35,30 @@ body {
   overflow: hidden;
 }
 
-/*  About (자기소개) 컴포넌트 */
+
+
+/* 자기소개 영역 */
 .about-section {
   background-color: var(--section-bg);
   color: var(--text-color);
   padding: 4rem 1rem;
 }
 
-/*  Stack 컴포넌트 */
+/* 기술 스택 영역 */
 .stack-section {
   background-color: var(--section-bg);
   color: var(--text-color);
   padding: 5.25rem 0.8rem 5rem 0.8rem;
 }
 
-/*  ProjectSection 컴포넌트 */
+/* 프로젝트 영역 */
 .project-section {
   background-color: var(--bg-color);
   color: var(--text-color);
   padding: 4rem 1rem;
 }
 
-/*  Footer 컴포넌트 */
+/* 하단 푸터 */
 .footer {
   background-color: var(--bg-color);
   color: var(--text-color);

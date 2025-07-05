@@ -1,40 +1,54 @@
+/* stack 전체 영역 스타일 */
+#stack {
+  scroll-margin-top: 90px;
+}
 .stack-section {
   width: 100%;
-  min-height: auto;
+  min-height: 145vh;
   background-color: var(--section-bg);
-  padding: 5.25rem 0.8rem 5rem 0.8rem;
+  padding: 3rem 1rem 2rem !important;
+  margin-top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: visible;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
-/* 제목 */
+/* 섹션 타이틀 */
 .stack-title {
   font-size: 2rem;
   font-weight: 700;
   color: var(--text-color) !important;
-  margin-bottom: 1rem;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.03rem;
 }
 
-/* 그룹 */
+/* 각 그룹 영역 */
 .stack-group {
   width: 100%;
   max-width: 800px;
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.8rem;
 }
 
+/* 그룹 제목 스타일 */
 .stack-category {
   display: flex;
   align-items: center;
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 0.4rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  margin-bottom: 0.65rem;
   color: var(--text-color) !important;
-  padding-left: 0.4rem;
-  border-left: 3px solid var(--border-color);
+  padding-left: 0.6rem;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 4px;
 }
 
+/* Notion 링크 wrapper */
 .notion-category-link {
   display: inline-flex;
   flex-direction: column;
@@ -43,107 +57,166 @@
   text-decoration: none;
 }
 
+/* Notion 아이콘 */
 .notion-icon {
   width: 14px;
   height: 14px;
   opacity: 0.5;
 }
 
+/* Notion 텍스트 */
 .notion-label {
   font-size: 0.6rem;
   color: var(--muted-text-color) !important;
   margin-top: 2px;
 }
 
-/* 카드 그리드 */
+/* 기술 카드 전체 그리드 */
 .stack-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   gap: 0.7rem;
 }
 
-/* 카드 디자인 */
+/* 기술 카드 기본 스타일 */
 .stack-card {
   background-color: var(--card-bg);
   border-radius: 6px;
-  padding: 0.4rem;
-  text-align: center;
-  height: 120px;
+  height: 140px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
   border: 1px solid var(--border-color);
   transition: transform 0.25s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 0.4rem;
 }
 
+/* 카드 hover 효과 */
 .stack-card:hover {
   transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* 익힘 정도별 배경색 */
+/* 카드 내부: 기본 정보 */
+.card-default {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  transition: opacity 0.3s ease;
+}
+
+/* 카드 내부: 설명 영역 (hover 시 보여짐) */
+.card-description {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  text-align: center;
+  padding: 1rem 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #222;
+  line-height: 1.6;
+  white-space: pre-line;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.015rem;
+  border: 1px dashed rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(5px);
+  transform: scale(1);
+}
+
+/* hover 시 카드 전환 효과 */
+.stack-card:hover .card-default {
+  opacity: 0;
+}
+.stack-card:hover .card-description {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1.03);
+}
+
+/* 익힘 정도별 카드 배경색 */
 .level-soft.stack-card {
   background-color: #e2e4e0;
 }
-
 .level-medium.stack-card {
   background-color: #d3d3d3;
 }
-
 .level-hard.stack-card {
   background-color: #bbbdbb;
 }
 
+/* 계란 이미지 스타일 */
 .egg-img {
   width: 32px;
   height: 32px;
-  margin: 0 auto 0.3rem;
+  margin: 0.425rem auto 0.2rem;
   filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.03));
 }
 
+/* 익힘 단계별 계란 필터 */
 .level-soft .egg-img {
-  filter: brightness(115%) opacity(0.5);
+  filter: brightness(120%) opacity(0.45);
 }
 .level-medium .egg-img {
-  filter: brightness(100%) opacity(0.85);
+  filter: brightness(110%) opacity(0.75);
 }
 .level-hard .egg-img {
-  filter: brightness(100%) opacity(1);
+  filter: brightness(85%) contrast(120%) opacity(1);
 }
 
-/* 카드 내 텍스트 */
+/* 기술명 */
 .tech-name {
-  font-weight: 600;
-  font-size: 0.725rem;
-  color: #333;
-  margin-bottom: 0.1rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #222;
+  margin-bottom: 0.15rem;
 }
 
+/* 익힘 정도 텍스트 */
 .tech-level {
-  font-size: 0.68rem;
-  color: #333;
-  margin-bottom: 0.2rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 0.3rem;
 }
 
+/* hover 이전 설명 숨김 처리 */
 .tech-description {
-  font-size: 0.6rem;
+  display: none;
+}
+
+/* 라이트 모드용 설명 배경 */
+[data-theme='light'] .card-description {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #444;
+}
+
+/* 다크 모드용 설명 배경 */
+[data-theme='dark'] .card-description {
+  background-color: rgba(255, 255, 255, 0.08);
   color: #333;
-  line-height: 1.2;
-  padding: 0 0.2rem;
-  white-space: pre-line;
 }
 
 /* 모바일 대응 */
 @media (max-width: 480px) {
   .stack-section {
-    max-height: 750px;
-    padding: 1.2rem 0.6rem 1rem;
+    height: auto !important;
+    min-height: 51.25rem;
+    padding: 0.5rem 0.6rem 1rem;
     margin-bottom: 0;
   }
 
   .stack-title {
     font-size: 1rem;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.6rem;
   }
 
   .stack-category {
@@ -173,11 +246,12 @@
     font-size: 0.6rem;
   }
 
-  .tech-description {
-    font-size: 0.425rem;
-  }
-
   .notion-label {
     font-size: 0.5rem;
+  }
+
+  .card-description {
+    font-size: 0.5rem;
+    padding: 0.4rem;
   }
 }
