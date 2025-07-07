@@ -20,18 +20,18 @@
 
 /* About 섹션 제목 */
 .section-title {
-  font-size: 2rem;
+  font-size: 0.85rem;
   font-weight: 700;
   margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 0.85rem;
   text-align: center;
   color: var(--text-color) !important;
 }
 
 /* 상단 너구리 이미지 */
 .raccoon-image {
-  width: 180px;
-  height: 180px;
+  width: 160px;
+  height: 160px;
   filter: grayscale(100%);
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -46,8 +46,8 @@
 
 /* 자기소개 문단 */
 .about-intro {
-  font-size: 0.92rem;
-  line-height: 1.45;
+  font-size: 0.95rem;
+  line-height: 1rem;
   margin-bottom: 2.5rem;
   white-space: pre-line;
   color: var(--text-color);
