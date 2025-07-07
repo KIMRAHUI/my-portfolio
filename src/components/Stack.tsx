@@ -20,9 +20,9 @@ const techStacks = [
     notionUrl: 'https://smoggy-gymnast-0ed.notion.site/My-sql-1f077fa64f7f80458446cb808af26fa6?source=copy_link',
     notionLabel: 'sql',
     stacks: [
-      { name: 'MySQL', level: '흰자만 익음', desc: '기본적인 SELECT/INSERT 쿼리\n작성 가능' },
+      { name: 'MySQL', level: '반숙', desc: 'SELECT, INSERT, UPDATE, DELETE 등 기본 쿼리를 작성해보고, 간단한 테이블 구조를 다뤄본 경험 있음' },
       { name: 'Supabase', level: '반숙', desc: '프로젝트에서 인증과 데이터 관리를\n실제로 적용' },
-      { name: 'Express', level: '흰자만 익음', desc: '간단한 API 라우팅을\n구성해본 경험' },
+      { name: 'Express', level: '반숙', desc: 'REST API의 라우팅을 직접 구성해보고, 간단한 요청/응답 흐름과 미들웨어 사용을 연습 중' },
     ],
   },
   {
@@ -31,7 +31,7 @@ const techStacks = [
       {
         name: 'Illustrator',
         level: '완숙',
-        desc: '계란 아이콘, MyCar360 피피티 삽화\n Illustrator로 제작해\nUI를 시각적으로 전달',
+        desc: '계란 아이콘, MyCar360 피피티\n Illustrator로 제작해\nUI를 시각적으로 전달',
       },
       {
         name: 'After Effects',
@@ -52,8 +52,8 @@ const techStacks = [
       { label: 'Python', url: 'https://smoggy-gymnast-0ed.notion.site/Python-1f077fa64f7f805e9b81eaca9c2d24e0?source=copy_link' },
     ],
     stacks: [
-      { name: 'Java', level: '흰자만 익음', desc: '객체지향 구조와 기본 문법을 익히는 중' },
-      { name: 'Python', level: '흰자만 익음', desc: '데이터 처리와 알고리즘 중심으로 기초를 학습 중' },
+      { name: 'Java', level: '반숙', desc: '자료형, 제어문, 배열, 클래스·상속·인터페이스 등을 중심 객체지향 구조를 익히고, 간단한 예제로 문법과 설계 흐름 학습 중' },
+      { name: 'Python', level: '반숙', desc: '기초 문법과 자료구조를 학습하고 알고리즘 문제 풀이로\n 흐름을 익히는 중, 자동화나 데이터 처리 실습도 병행 중' },
     ],
   },
 ];
