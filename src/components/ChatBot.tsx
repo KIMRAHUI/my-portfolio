@@ -3,8 +3,6 @@ import { createSocket } from '../socket';
 import './ChatBot.css';
 import axios from 'axios';
 
-
-
 const predefinedAnswers: Record<string, string> = {
   '학력': '메이필드호텔전문학교 식음료학과 졸업 후, 경희사이버대학교 글로벌경영학과를 2024년 8월에 졸업하였습니다.🎓',
   '경력': '에스씨케이컴퍼니(2017~2018), 케이엘이엔씨(2020~2024)에서 고객 응대 및 관리 업무를 수행했습니다. IT 분야는 신입으로 도전 중입니다.💼',
@@ -33,10 +31,7 @@ export default function ChatBot() {
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<Message[]>([
-    {
-      sender: 'bot',
-      text: '안녕하세요! 포트폴리오 관련 궁금하신 점을 물어보세요 😊',
-    },
+    { sender: 'bot', text: '안녕하세요! 포트폴리오 관련 궁금하신 점을 물어보세요 😊' },
   ]);
   const [available, setAvailable] = useState(false);
   const [applicantStatus, setApplicantStatus] = useState<boolean | null>(null);
@@ -48,13 +43,26 @@ export default function ChatBot() {
   const [passwordInput, setPasswordInput] = useState('');
   const [authError, setAuthError] = useState('');
 
+  // 면접관 정보 저장 및 확인 처리
+  const handleConfirmInterviewer = async () => {
+    if (!name.trim() || !company.trim()) {
+      alert('이름과 회사는 반드시 입력해주세요.');
+      return;
+    }
+    try {
+      await axios.post('/save-interviewer', { name, company, email, message: '' });
+      setIsConfirmed(true);
+    } catch (err) {
+      console.error('면접관 정보 저장 실패:', err);
+      alert('정보 저장 중 오류가 발생했습니다.');
+    }
+  };
+
   const handleToggleAvailability = async () => {
     const newState = !available;
     setAvailable(newState);
 
-    await axios.post('/set-availability', {
-      active: newState,
-    });
+    await axios.post('/set-availability', { active: newState });
 
     if (socket.current) {
       socket.current.emit('availability', { status: newState });
@@ -74,47 +82,26 @@ export default function ChatBot() {
 
     socketInstance.on('message', (data: any) => {
       if (data.senderId === socketInstance.id) return;
-
-      setMessages((prev) => [
-        ...prev,
-        { sender: 'interviewer', text: data.message },
-      ]);
-
-      const matched = Object.keys(predefinedAnswers).find((k) =>
-        data.message.includes(k)
-      );
-
+      setMessages(prev => [...prev, { sender: 'interviewer', text: data.message }]);
+      const matched = Object.keys(predefinedAnswers).find(k => data.message.includes(k));
       if (matched && currentRole === 'applicant') {
         const autoReply = predefinedAnswers[matched];
-
-        socketInstance.emit('reply', {
-          message: autoReply,
-          senderId: socketInstance.id,
-        });
-
-        setMessages((prev) => [
-          ...prev,
-          { sender: 'bot', text: autoReply },
-        ]);
+        socketInstance.emit('reply', { message: autoReply, senderId: socketInstance.id });
+        setMessages(prev => [...prev, { sender: 'bot', text: autoReply }]);
       }
     });
 
     socketInstance.on('auto-reply', (data: any) => {
       if (currentRole === 'applicant') return;
-      setMessages((prev) => [...prev, { sender: 'bot', text: data.message }]);
+      setMessages(prev => [...prev, { sender: 'bot', text: data.message }]);
     });
 
     socketInstance.on('reply', (data: any) => {
-      console.log('[면접관 수신] 자동응답:', data.message);
-      setMessages((prev) => [...prev, { sender: 'bot', text: data.message }]);
+      setMessages(prev => [...prev, { sender: 'bot', text: data.message }]);
     });
 
-
-
     socketInstance.on('availability', (data: any) => {
-      if (currentRole === 'interviewer') {
-        setApplicantStatus(data.status);
-      }
+      if (currentRole === 'interviewer') setApplicantStatus(data.status);
     });
   }
 
@@ -129,31 +116,16 @@ export default function ChatBot() {
 
   const handleSend = () => {
     if (!input.trim()) return;
-
-    const userMessage = { sender: 'user' as const, text: input };
-    setMessages((prev) => [...prev, userMessage]);
-
+    setMessages(prev => [...prev, { sender: 'user', text: input }]);
     if (role === 'interviewer') {
-      socket.current?.emit('message', {
-        name,
-        company,
-        email,
-        message: input,
-        senderId: socket.current.id,
-      });
+      socket.current?.emit('message', { name, company, email, message: input, senderId: socket.current.id });
     } else {
-      socket.current?.emit('reply', {
-        message: input,
-        senderId: socket.current.id,
-      });
+      socket.current?.emit('reply', { message: input, senderId: socket.current.id });
     }
-
     setInput('');
   };
 
-  useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages]);
+  useEffect(() => { endRef.current?.scrollIntoView({ behavior: 'smooth' }); }, [messages]);
 
   return (
     <div className="chatbot-container">
@@ -163,120 +135,43 @@ export default function ChatBot() {
           <button onClick={() => setRole('interviewer')}>👔 면접관</button>
           <button onClick={() => setShowPasswordPrompt(true)}>💻 지원자(본인)</button>
         </div>
-      ) : role === 'interviewer' && (!isConfirmed) ? (
+      ) : role === 'interviewer' && !isConfirmed ? (
         <div className="chatbot-init-form">
           <h3>면접관 정보 입력</h3>
-          <input
-            placeholder="이름"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <input
-            placeholder="회사(지점)"
-            value={company}
-            onChange={(e) => setCompany(e.target.value)}
-          />
-          <input
-            type="email"
-            placeholder="이메일 (선택)"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <button
-            className="confirm-button"
-            onClick={async () => {
-              if (name.trim() && company.trim()) {
-                // ✅ Supabase에 정보 저장
-                try {
-                  await axios.post('/save-interviewer', {
-                    name,
-                    company,
-                    email,
-                    message: '', // 아직 질문 전이므로 공란
-                  });
-                } catch (error) {
-                  console.error('면접관 정보 저장 실패:', error);
-                }
-
-                setIsConfirmed(true);
-              }
-            }}
-          >
-            확인
-          </button>
-
+          <input placeholder="이름" value={name} onChange={e => setName(e.target.value)} />
+          <input placeholder="회사(지점)" value={company} onChange={e => setCompany(e.target.value)} />
+          <input type="email" placeholder="이메일 (선택)" value={email} onChange={e => setEmail(e.target.value)} />
+          <button className="confirm-button" onClick={handleConfirmInterviewer}>확인</button>
         </div>
       ) : (
         <>
-          {role === 'applicant' && (
-            <div className="chat-status-bar">
-              {available ? '🟢 활동중' : '😴 부재중'}
-            </div>
-          )}
-          {role === 'interviewer' && applicantStatus !== null && (
-            <div className="chat-status-bar">
-              지원자 상태: {applicantStatus ? '🟢 활동중' : '😴 부재중'}
-            </div>
-          )}
-
-          {role === 'applicant' && (
-            <div className="availability-toggle">
-              <button onClick={handleToggleAvailability}>
-                상태: {available ? '🟢 활동중' : '😴 부재중'}
-              </button>
-            </div>
-          )}
-
+          {role === 'applicant' && <div className="chat-status-bar">{available ? '🟢 활동중' : '😴 부재중'}</div>}
+          {role === 'interviewer' && applicantStatus !== null && <div className="chat-status-bar">지원자 상태: {applicantStatus ? '🟢 활동중' : '😴 부재중'}</div>}
+          {role === 'applicant' && <div className="availability-toggle"><button onClick={handleToggleAvailability}>상태: {available ? '🟢 활동중' : '😴 부재중'}</button></div>}
           <div className="chatbot-window">
-            {messages.map((msg, idx) => (
-              <div key={idx} className={`message ${msg.sender}`}>
-                {msg.text}
-              </div>
-            ))}
+            {messages.map((msg, idx) => <div key={idx} className={`message ${msg.sender}`}>{msg.text}</div>)}
             <div ref={endRef} />
           </div>
-
           <div className="chatbot-input">
-            <input
-              type="text"
-              value={input}
-              placeholder="예: 기술스택, 디자인, 자격증 등"
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-            />
+            <input type="text" value={input} placeholder="예: 기술스택, 디자인, 자격증 등" onChange={e => setInput(e.target.value)} onKeyDown={e => e.key === 'Enter' && handleSend()} />
             <button onClick={handleSend}>전송</button>
           </div>
         </>
       )}
-
       {showPasswordPrompt && (
         <div className="chatbot-init-form">
           <h3>지원자 비밀번호 입력</h3>
-          <input
-            type="password"
-            placeholder="비밀번호"
-            value={passwordInput}
-            onChange={(e) => setPasswordInput(e.target.value)}
-          />
+          <input type="password" placeholder="비밀번호" value={passwordInput} onChange={e => setPasswordInput(e.target.value)} />
           {authError && <p className="auth-error">{authError}</p>}
-          <button
-            onClick={() => {
-              if (passwordInput === '0505') {
-                setRole('applicant');
-                setShowPasswordPrompt(false);
-                setPasswordInput('');
-                setAuthError('');
-                if (!socket.current) {
-                  socket.current = createSocket('applicant', name, company);
-                  setupSocketListeners(socket.current, 'applicant');
-                }
-              } else {
-                setAuthError('비밀번호가 틀렸습니다.');
+          <button onClick={() => {
+            if (passwordInput === '0505') {
+              setRole('applicant'); setShowPasswordPrompt(false); setPasswordInput(''); setAuthError('');
+              if (!socket.current) {
+                socket.current = createSocket('applicant', name, company);
+                setupSocketListeners(socket.current, 'applicant');
               }
-            }}
-          >
-            확인
-          </button>
+            } else setAuthError('비밀번호가 틀렸습니다.');
+          }}>확인</button>
         </div>
       )}
     </div>
