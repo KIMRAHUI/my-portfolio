@@ -1,69 +1,99 @@
 /* 챗봇 전체 컨테이너 박스 (우측 하단 고정) */
 .chatbot-container {
   position: fixed;
-  bottom: 1.25rem; /* 버튼과 적절한 간격 */
-  right: 2.7rem; /* 우측 여백 */
+  bottom: 1.25rem;
+  right: 2.7rem;
   width: 300px;
   height: 400px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   z-index: 1000;
-  font-family: 'Pretendard', sans-serif;
+  font-family: 'Pretendard', 'Segoe UI', sans-serif;
+}
+
+/* 초기 입력창 (이름/회사) */
+.chatbot-init-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  justify-content: center;
+  gap: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.chatbot-init-form input {
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.9rem;
 }
 
 /* 대화 메시지 출력 영역 */
 .chatbot-window {
   flex: 1;
-  padding: 0.8rem;
-  overflow-y: auto; /* 메시지 길어지면 스크롤 가능 */
+  padding: 0.9rem;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem; /* 메시지 간격 */
+  gap: 0.5rem;
+  background-color: #fefefe;
 }
 
 /* 메시지 공통 스타일 */
 .message {
   max-width: 80%;
-  padding: 0.5rem 0.7rem;
-  border-radius: 12px;
-  line-height: 1.4;
+  padding: 0.6rem 0.85rem;
+  border-radius: 16px;
+  line-height: 1.5;
   white-space: pre-line;
   word-break: break-word;
-  font-size: 0.85rem;
-}
-
-/* 챗봇 메시지 (좌측 정렬) */
-.message.bot {
-  background-color: #f1f1f1;
-  align-self: flex-start;
-  color: #333;
+  font-size: 0.84rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 /* 사용자 메시지 (우측 정렬) */
 .message.user {
-  background-color: #d0eaff;
   align-self: flex-end;
-  color: #111;
+  background-color: #d0eaff;
+  color: #1b1b1b;
 }
 
-/* 입력창 전체 래퍼 (인풋 + 버튼) */
+/* 챗봇 응답 메시지 (좌측 정렬) */
+.message.bot {
+  align-self: flex-start;
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+/* 면접관 메시지 (좌측, 연한 초록) */
+.message.interviewer {
+  align-self: flex-start;
+  background-color: #e7fbe7;
+  color: #225522;
+}
+
+/* 입력창 전체 영역 (인풋 + 버튼) */
 .chatbot-input {
   display: flex;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #e6e6e6;
+  background-color: #fafafa;
 }
 
-/* 인풋 박스 */
+/* 텍스트 입력 */
 .chatbot-input input {
   flex: 1;
   border: none;
-  padding: 0.6rem;
+  padding: 0.65rem 0.8rem;
   font-size: 0.85rem;
+  border-radius: 0 0 0 14px;
   outline: none;
-  border-radius: 0 0 0 12px;
+  background-color: #fff;
 }
 
 /* 전송 버튼 */
@@ -71,14 +101,59 @@
   border: none;
   background-color: #007bff;
   color: white;
-  padding: 0 1rem;
+  padding: 0 1.1rem;
   font-size: 0.85rem;
   cursor: pointer;
-  border-radius: 0 0 12px 0;
+  border-radius: 0 0 14px 0;
   transition: background-color 0.2s;
 }
 
-/* 전송 버튼 호버 시 색상 변경 */
 .chatbot-input button:hover {
   background-color: #005dc3;
+}
+.chat-status-bar {
+  font-size: 0.9rem;
+  padding: 0.4rem 0.8rem;
+  color: gray;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* ChatBot.css */
+.auth-error {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+}
+
+@media (max-width: 485px) {
+  .chatbot-container {
+    bottom: 18rem; 
+    right: 4.525rem;
+    width: 60vw;
+    height: 50vh;
+    border-radius: 12px;
+  }
+
+  .chatbot-window {
+    padding-bottom: 5.5rem; /* ✅ 입력창 공간 확보 */
+  }
+
+  .chatbot-input {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 0 0 12px 12px;
+  }
+
+  .chatbot-input input {
+    border-radius: 0;
+  }
+
+  .chatbot-input button {
+    border-radius: 0;
+     font-size: 0.65rem;
+  }
+ 
 }
