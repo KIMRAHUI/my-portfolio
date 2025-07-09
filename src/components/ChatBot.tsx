@@ -127,53 +127,93 @@ export default function ChatBot() {
 
   useEffect(() => { endRef.current?.scrollIntoView({ behavior: 'smooth' }); }, [messages]);
 
-  return (
-    <div className="chatbot-container">
-      {!role ? (
-        <div className="chatbot-init-form">
-          <h3>당신은 누구인가요?</h3>
-          <button onClick={() => setRole('interviewer')}>👔 면접관</button>
-          <button onClick={() => setShowPasswordPrompt(true)}>💻 지원자(본인)</button>
-        </div>
-      ) : role === 'interviewer' && !isConfirmed ? (
-        <div className="chatbot-init-form">
-          <h3>면접관 정보 입력</h3>
-          <input placeholder="이름" value={name} onChange={e => setName(e.target.value)} />
-          <input placeholder="회사(지점)" value={company} onChange={e => setCompany(e.target.value)} />
-          <input type="email" placeholder="이메일 (선택)" value={email} onChange={e => setEmail(e.target.value)} />
-          <button className="confirm-button" onClick={handleConfirmInterviewer}>확인</button>
-        </div>
-      ) : (
-        <>
-          {role === 'applicant' && <div className="chat-status-bar">{available ? '🟢 활동중' : '😴 부재중'}</div>}
-          {role === 'interviewer' && applicantStatus !== null && <div className="chat-status-bar">지원자 상태: {applicantStatus ? '🟢 활동중' : '😴 부재중'}</div>}
-          {role === 'applicant' && <div className="availability-toggle"><button onClick={handleToggleAvailability}>상태: {available ? '🟢 활동중' : '😴 부재중'}</button></div>}
-          <div className="chatbot-window">
-            {messages.map((msg, idx) => <div key={idx} className={`message ${msg.sender}`}>{msg.text}</div>)}
-            <div ref={endRef} />
+return (
+  <div className="chatbot-container">
+    {/* 1️⃣ 역할 선택 화면 */}
+    {!role && !showPasswordPrompt && (
+      <div className="chatbot-init-form">
+        <h3>당신은 누구인가요?</h3>
+        <button onClick={() => setRole('interviewer')}>👔 면접관</button>
+        <button onClick={() => {
+          setRole('applicant');
+          setShowPasswordPrompt(true);
+        }}>💻 지원자(본인)</button>
+      </div>
+    )}
+
+    {/* 2️⃣ 면접관 정보 입력 폼 */}
+    {role === 'interviewer' && !isConfirmed && (
+      <div className="chatbot-init-form">
+        <h3>면접관 정보 입력</h3>
+        <input placeholder="이름" value={name} onChange={e => setName(e.target.value)} />
+        <input placeholder="회사(지점)" value={company} onChange={e => setCompany(e.target.value)} />
+        <input type="email" placeholder="이메일 (선택)" value={email} onChange={e => setEmail(e.target.value)} />
+        <button className="confirm-button" onClick={handleConfirmInterviewer}>확인</button>
+      </div>
+    )}
+
+    {/* 3️⃣ 지원자 비밀번호 입력폼 */}
+    {role === 'applicant' && showPasswordPrompt && (
+      <div className="chatbot-init-form">
+        <h3>지원자 비밀번호 입력</h3>
+        <input
+          type="password"
+          placeholder="비밀번호"
+          value={passwordInput}
+          onChange={e => setPasswordInput(e.target.value)}
+        />
+        {authError && <p className="auth-error">{authError}</p>}
+        <button onClick={() => {
+          if (passwordInput === '0505') {
+            setShowPasswordPrompt(false);
+            setPasswordInput('');
+            setAuthError('');
+            if (!socket.current) {
+              socket.current = createSocket('applicant', name, company);
+              setupSocketListeners(socket.current, 'applicant');
+            }
+          } else {
+            setAuthError('비밀번호가 틀렸습니다.');
+          }
+        }}>확인</button>
+      </div>
+    )}
+
+    {/* 4️⃣ 대화창 인터페이스 */}
+    {((role === 'interviewer' && isConfirmed) || (role === 'applicant' && !showPasswordPrompt)) && (
+      <>
+        {role === 'applicant' && (
+          <div className="chat-status-bar">{available ? '🟢 활동중' : '😴 부재중'}</div>
+        )}
+        {role === 'interviewer' && applicantStatus !== null && (
+          <div className="chat-status-bar">지원자 상태: {applicantStatus ? '🟢 활동중' : '😴 부재중'}</div>
+        )}
+        {role === 'applicant' && (
+          <div className="availability-toggle">
+            <button onClick={handleToggleAvailability}>
+              상태: {available ? '🟢 활동중' : '😴 부재중'}
+            </button>
           </div>
-          <div className="chatbot-input">
-            <input type="text" value={input} placeholder="예: 기술스택, 디자인, 자격증 등" onChange={e => setInput(e.target.value)} onKeyDown={e => e.key === 'Enter' && handleSend()} />
-            <button onClick={handleSend}>전송</button>
-          </div>
-        </>
-      )}
-      {showPasswordPrompt && (
-        <div className="chatbot-init-form">
-          <h3>지원자 비밀번호 입력</h3>
-          <input type="password" placeholder="비밀번호" value={passwordInput} onChange={e => setPasswordInput(e.target.value)} />
-          {authError && <p className="auth-error">{authError}</p>}
-          <button onClick={() => {
-            if (passwordInput === '0505') {
-              setRole('applicant'); setShowPasswordPrompt(false); setPasswordInput(''); setAuthError('');
-              if (!socket.current) {
-                socket.current = createSocket('applicant', name, company);
-                setupSocketListeners(socket.current, 'applicant');
-              }
-            } else setAuthError('비밀번호가 틀렸습니다.');
-          }}>확인</button>
+        )}
+        <div className="chatbot-window">
+          {messages.map((msg, idx) => (
+            <div key={idx} className={`message ${msg.sender}`}>{msg.text}</div>
+          ))}
+          <div ref={endRef} />
         </div>
-      )}
-    </div>
-  );
+        <div className="chatbot-input">
+          <input
+            type="text"
+            value={input}
+            placeholder="예: 기술스택, 디자인, 자격증 등"
+            onChange={e => setInput(e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && handleSend()}
+          />
+          <button onClick={handleSend}>전송</button>
+        </div>
+      </>
+    )}
+  </div>
+);
+
 }

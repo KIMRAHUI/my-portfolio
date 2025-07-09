@@ -34,6 +34,25 @@
   font-size: 0.9rem;
 }
 
+/* 면접관/지원자 선택버튼 */
+.chatbot-init-form button {
+  padding: 0.6rem 0.9rem;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  border: none;
+  background-color: #f0f0f0;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.chatbot-init-form button:hover {
+  background-color: #e0e0e0;
+  transform: translateY(-1px);
+}
+
+
 /* 대화 메시지 출력 영역 */
 .chatbot-window {
   flex: 1;
@@ -84,6 +103,26 @@
   border-top: 1px solid #e6e6e6;
   background-color: #fafafa;
 }
+
+/*확인버튼*/
+.confirm-button {
+  padding: 0.6rem 1.1rem;
+  background-color: #28a745;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.confirm-button:hover {
+  background-color: #218838;
+}
+
+
+
 
 /* 텍스트 입력 */
 .chatbot-input input {
