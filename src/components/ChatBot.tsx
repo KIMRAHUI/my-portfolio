@@ -62,7 +62,7 @@ export default function ChatBot() {
     const newState = !available;
     setAvailable(newState);
 
-    await axios.post('/set-availability', { active: newState });
+    await axios.default.post('/set-availability', { active: newState });
 
     if (socket.current) {
       socket.current.emit('availability', { status: newState });

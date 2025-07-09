@@ -6,11 +6,12 @@ export function createSocket(
   name?: string,
   company?: string
 ): Socket {
-  return io('http://localhost:10000', {
+  return io('https://portfolio-interview-chat.onrender.com', {
     query: {
       role,
       name,
       company,
     },
+    transports: ['websocket'], //안정성
   });
 }
