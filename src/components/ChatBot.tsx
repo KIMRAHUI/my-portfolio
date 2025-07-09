@@ -50,7 +50,7 @@ export default function ChatBot() {
       return;
     }
     try {
-      await axios.default.post('/save-interviewer', { name, company, email, message: '' });
+      await axios.default.post('https://portfolio-interview-chat.onrender.com/save-interviewer', { name, company, email, message: '' });
       setIsConfirmed(true);
     } catch (err) {
       console.error('면접관 정보 저장 실패:', err);
@@ -62,7 +62,7 @@ export default function ChatBot() {
     const newState = !available;
     setAvailable(newState);
 
-    await axios.default.post('/set-availability', { active: newState });
+    await axios.default.post('https://portfolio-interview-chat.onrender.com/set-availability', { active: newState });
 
     if (socket.current) {
       socket.current.emit('availability', { status: newState });
