@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { createSocket } from '../socket';
 import './ChatBot.css';
-import axios from 'axios';
+import * as axios from 'axios';
 
 const predefinedAnswers: Record<string, string> = {
   '학력': '메이필드호텔전문학교 식음료학과 졸업 후, 경희사이버대학교 글로벌경영학과를 2024년 8월에 졸업하였습니다.🎓',
@@ -50,7 +50,7 @@ export default function ChatBot() {
       return;
     }
     try {
-      await axios.post('/save-interviewer', { name, company, email, message: '' });
+      await axios.default.post('/save-interviewer', { name, company, email, message: '' });
       setIsConfirmed(true);
     } catch (err) {
       console.error('면접관 정보 저장 실패:', err);
