@@ -223,7 +223,7 @@ export default function ChatBot() {
           />
           <input
             type="email"
-            placeholder="이메일 (선택)"
+            placeholder="이메일"
             value={email}
             onChange={e => setEmail(e.target.value)}
             onKeyDown={e => {
