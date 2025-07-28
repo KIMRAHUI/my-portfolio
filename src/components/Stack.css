@@ -172,6 +172,32 @@
   filter: brightness(85%) contrast(120%) opacity(1);
 }
 
+.level-guide {
+  margin: 0.5rem 0 1rem;
+  font-size: 0.9rem;
+  color: #666;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.level-tag {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.level-medium {
+  background-color: #ffaf02;
+}
+
+.level-hard {
+  background-color: #fc5401;   
+}
+
 /* 기술명 */
 .tech-name {
   font-weight: 700;

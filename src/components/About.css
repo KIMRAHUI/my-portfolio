@@ -1,4 +1,4 @@
-/* About 섹션 전체 설정 */
+About 섹션 전체 설정
 #about {
   scroll-margin-top: 70px;
 }
@@ -20,7 +20,7 @@
 
 /* About 섹션 제목 */
 .section-title {
-  font-size: 0.85rem;
+  font-size: 2rem;
   font-weight: 700;
   margin-top: 0;
   margin-bottom: 0.85rem;
@@ -57,57 +57,6 @@
   margin-right: auto;
 }
 
-/* FAQ 전체 컨테이너 */
-.faq-container {
-  text-align: left;
-  margin: 0 auto;
-  max-width: 520px;
-  width: 92%;
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-
-/* 질문-답변 블록 */
-.faq-item {
-  padding: 0.45rem 0;
-  cursor: pointer;
-}
-
-/* 질문 버튼 */
-.faq-question {
-  all: unset;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--text-color);
-  cursor: pointer;
-  border-bottom: 2px solid var(--text-color);
-  margin-bottom: 0.25rem;
-}
-
-/* 키보드 포커스 시 아웃라인 제거 */
-.faq-question:focus {
-  outline: none;
-}
-
-/* 질문 오른쪽 화살표 */
-.arrow {
-  font-size: 0.8rem;
-  color: var(--text-color);
-}
-
-/* 답변 영역 */
-.faq-answer {
-  padding: 0.5rem 0 0.6rem 1rem;
-  color: var(--muted-text-color);
-  font-size: 0.78rem;
-  white-space: pre-line;
-  text-align: left;
-  border-bottom: 1px solid var(--muted-text-color);
-}
 
 /* 모바일 스타일 */
 @media (max-width: 480px) {
@@ -124,28 +73,6 @@
     line-height: 1.4;
     margin-bottom: 1.5rem;
   }
-
-  /* FAQ 좌우 여백 축소 */
-  .faq-container {
-    padding: 0 0.4rem;
-  }
-
-  /* 질문 버튼 크기 축소 */
-  .faq-question {
-    font-size: 0.9rem;
-    line-height: 1.4;
-    margin-bottom: 0.3rem;
-    border-bottom: 2px solid var(--text-color);
-  }
-
-  /* 답변 텍스트 크기 축소 */
-  .faq-answer {
-    font-size: 0.78rem;
-    line-height: 1.5;
-    padding: 0.4rem 0 0.6rem 0.8rem;
-    border-bottom: 1px solid var(--muted-text-color);
-  }
-
   /* 제목 폰트 크기 축소 */
   .section-title {
     font-size: 1.5rem;

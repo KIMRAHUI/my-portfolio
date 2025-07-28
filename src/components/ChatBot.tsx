@@ -47,15 +47,15 @@ export default function ChatBot() {
   const startPromptRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-  console.log('[디버깅] isChatting 상태:', isChatting);
-}, [isChatting]);
+    console.log('[디버깅] isChatting 상태:', isChatting);
+  }, [isChatting]);
 
 
   useEffect(() => {
-  if (role === 'interviewer' && readyToStart && !isConfirmed) {
-    startPromptRef.current?.focus(); // ✅ 자동 포커스
-  }
-}, [role, readyToStart, isConfirmed]);
+    if (role === 'interviewer' && readyToStart && !isConfirmed) {
+      startPromptRef.current?.focus(); // ✅ 자동 포커스
+    }
+  }, [role, readyToStart, isConfirmed]);
 
   // ✅ ChatBot 컴포넌트 내부
   // 응답 타입 정의
@@ -204,6 +204,11 @@ export default function ChatBot() {
             setRole('applicant');
             setShowPasswordPrompt(true);
           }}>💻 지원자(본인)</button>
+          {/*부재중 안내 문구*/}
+          <p className="chat-warning-text">
+            🦝 <strong>주의<br/>:</strong> 부재중 일때는 자동응답으로대응됩니다.<br />
+            📩 <strong>rho0531@naver.com</strong> 으로<br/> 메일 주시면 빠르게 회신드리겠습니다.
+          </p>
         </div>
       )}
 

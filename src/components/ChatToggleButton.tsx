@@ -43,7 +43,7 @@ export default function ChatToggleButton() {
           />
         </button>
 
-        <div className="chat-toggle-label">24시간 챗상담 가능</div>
+        <div className="chat-toggle-label">RAHUI TALK</div>
       </div>
     </>
   );

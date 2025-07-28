@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import './Stack.css';
-import eggImage from '../assets/egg-boiled.png';
+import eggImage from '../assets/egg-boiled.png'; // 반숙
+import eggImage2 from '../assets/egg-boiled(2).png'; // 완숙
 import notionIcon from '../assets/Notion-logo.png';
 
 /* 기술 스택 그룹 정보 (Frontend, Backend, Design, Learning) */
@@ -60,7 +61,6 @@ const techStacks = [
 
 /* Stack 컴포넌트 */
 export default function Stack() {
-  /* 페이지 로딩 시 최상단으로 스크롤 */
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -108,19 +108,26 @@ export default function Stack() {
                 className={`stack-card ${getLevelClass(tech.level)}`}
                 key={tech.name}
               >
-                {/* / * 기본 카드 레이아웃 (이미지 + 이름 + 숙련도) */ }
                 <div className="card-default">
-                  <img src={eggImage} alt="egg" className="egg-img" />
+                  <img
+                    src={getEggImage(tech.level)}
+                    alt="egg"
+                    className="egg-img"
+                  />
                   <div className="tech-name">{tech.name}</div>
                   <div className="tech-level">{tech.level}</div>
                 </div>
 
-                 {/* 호버 시 상세 설명 표시  */}
-                <div className="card-description">
-                  {tech.desc}
-                </div>
+                {/* 호버 시 상세 설명 표시 */}
+                <div className="card-description">{tech.desc}</div>
               </div>
             ))}
+          </div>
+
+          {/* 숙련도 가이드 */}
+          <div className="level-guide">
+            <span className="level-tag level-medium">반숙</span> 기초 활용 가능&nbsp;&nbsp;
+            <span className="level-tag level-hard">완숙</span> 실무 레벨 숙련
           </div>
         </div>
       ))}
@@ -128,16 +135,25 @@ export default function Stack() {
   );
 }
 
-/* 숙련도 텍스트에 따라 클래스 반환하는 함수 */
+/* 숙련도 텍스트에 따라 카드 색상 클래스 반환 */
 function getLevelClass(level: string) {
   switch (level) {
-    case '흰자만 익음':
-      return 'level-soft';
     case '반숙':
       return 'level-medium';
     case '완숙':
       return 'level-hard';
     default:
       return '';
+  }
+}
+
+/* 숙련도 텍스트에 따라 계란 이미지 반환 */
+function getEggImage(level: string) {
+  switch (level) {
+    case '완숙':
+      return eggImage2;
+    case '반숙':
+    default:
+      return eggImage;
   }
 }

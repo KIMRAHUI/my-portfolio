@@ -1,7 +1,7 @@
 /* 챗봇 버튼 래퍼 (기본 고정 위치, 우측 하단) */
 .chat-toggle-wrapper {
   position: fixed;
-  right: 20px;
+  right: 35px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,6 +53,7 @@
 .chat-toggle-label {
   margin-top: 6px;
   font-size: 0.75rem;
+  font-weight: 600;
   color: #444;
   background: #fff;
   padding: 4px 8px;

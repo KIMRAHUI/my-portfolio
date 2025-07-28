@@ -7,6 +7,9 @@ import qrImage from '../assets/resume-qr.png';
 const notionLink =
   'https://smoggy-gymnast-0ed.notion.site/21e77fa64f7f8033a8b8d1c900be982c?source=copy_link';
 
+/* PDF 이력서 파일 경로 (public 기준) */
+const pdfLink = '/resume.pdf';
+
 export default function ResumeQR() {
   /* 토글 상태 관리 */
   const [isOpen, setIsOpen] = useState(false);
@@ -36,6 +39,15 @@ export default function ResumeQR() {
             className="resume-link-button"
           >
             노션 이력서
+          </a>
+
+          {/* ✅ PDF 이력서 다운로드 버튼 */}
+          <a
+            href={pdfLink}
+            download="김라희_이력서.pdf"
+            className="resume-link-button"
+          >
+            PDF 다운로드
           </a>
         </div>
       )}
