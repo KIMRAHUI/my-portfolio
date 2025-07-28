@@ -1,6 +1,6 @@
-About 섹션 전체 설정
+/* About 섹션 전체 설정 */
 #about {
-  scroll-margin-top: 70px;
+  scroll-margin-top: 80px;
 }
 
 /* About 전체 레이아웃 */
@@ -8,7 +8,7 @@ About 섹션 전체 설정
   position: relative;
   z-index: 2;
   background-color: var(--section-bg);
-  min-width: 440px;
+  min-width: 450px;
   min-height: auto;
   margin: 0 auto;
   padding: 2.5rem 1rem 2.5rem;
