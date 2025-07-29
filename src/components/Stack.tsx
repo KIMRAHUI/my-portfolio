@@ -8,7 +8,8 @@ import notionIcon from '../assets/Notion-logo.png';
 const techStacks = [
   {
     category: 'Frontend',
-    notionUrl: 'https://smoggy-gymnast-0ed.notion.site/Web-Development-Study-Notes-21677fa64f7f80f3bd28ffbfbd4c615f?source=copy_link',
+    notionUrl:
+      'https://smoggy-gymnast-0ed.notion.site/Web-Development-Study-Notes-21677fa64f7f80f3bd28ffbfbd4c615f?source=copy_link',
     notionLabel: 'web',
     stacks: [
       { name: 'JavaScript', level: '반숙', desc: '기초 문법과\nDOM 제어를 프로젝트 기반 학습 중' },
@@ -18,12 +19,21 @@ const techStacks = [
   },
   {
     category: 'Backend',
-    notionUrl: 'https://smoggy-gymnast-0ed.notion.site/My-sql-1f077fa64f7f80458446cb808af26fa6?source=copy_link',
+    notionUrl:
+      'https://smoggy-gymnast-0ed.notion.site/My-sql-1f077fa64f7f80458446cb808af26fa6?source=copy_link',
     notionLabel: 'sql',
     stacks: [
-      { name: 'MySQL', level: '반숙', desc: 'SELECT, INSERT, UPDATE, DELETE 등 기본 쿼리를 작성해보고, 간단한 테이블 구조를 다뤄본 경험 있음' },
+      {
+        name: 'MySQL',
+        level: '반숙',
+        desc: 'SELECT, INSERT, UPDATE, DELETE 등 기본 쿼리를 작성해보고, 간단한 테이블 구조를 다뤄본 경험 있음',
+      },
       { name: 'Supabase', level: '반숙', desc: '프로젝트에서 인증과 데이터 관리를\n실제로 적용' },
-      { name: 'Express', level: '반숙', desc: 'REST API의 라우팅을 직접 구성해보고, 간단한 요청/응답 흐름과 미들웨어 사용을 연습 중' },
+      {
+        name: 'Express',
+        level: '반숙',
+        desc: 'REST API의 라우팅을 직접 구성해보고, 간단한 요청/응답 흐름과 미들웨어 사용을 연습 중',
+      },
     ],
   },
   {
@@ -49,12 +59,26 @@ const techStacks = [
   {
     category: 'Learning',
     notionLinks: [
-      { label: 'Java', url: 'https://smoggy-gymnast-0ed.notion.site/JAVA-1f077fa64f7f807bade7d0643a4a18ab?source=copy_link' },
-      { label: 'Python', url: 'https://smoggy-gymnast-0ed.notion.site/Python-1f077fa64f7f805e9b81eaca9c2d24e0?source=copy_link' },
+      {
+        label: 'Java',
+        url: 'https://smoggy-gymnast-0ed.notion.site/JAVA-1f077fa64f7f807bade7d0643a4a18ab?source=copy_link',
+      },
+      {
+        label: 'Python',
+        url: 'https://smoggy-gymnast-0ed.notion.site/Python-1f077fa64f7f805e9b81eaca9c2d24e0?source=copy_link',
+      },
     ],
     stacks: [
-      { name: 'Java', level: '반숙', desc: '자료형, 제어문, 배열, 클래스·상속·인터페이스 등을 중심 객체지향 구조를 익히고, 간단한 예제로 문법과 설계 흐름 학습 중' },
-      { name: 'Python', level: '반숙', desc: '기초 문법과 자료구조를 학습하고 알고리즘 문제 풀이로\n 흐름을 익히는 중, 자동화나 데이터 처리 실습도 병행 중' },
+      {
+        name: 'Java',
+        level: '반숙',
+        desc: '자료형, 제어문, 배열, 클래스·상속·인터페이스 등을 중심 객체지향 구조를 익히고, 간단한 예제로 문법과 설계 흐름 학습 중',
+      },
+      {
+        name: 'Python',
+        level: '반숙',
+        desc: '기초 문법과 자료구조를 학습하고 알고리즘 문제 풀이로\n 흐름을 익히는 중, 자동화나 데이터 처리 실습도 병행 중',
+      },
     ],
   },
 ];
@@ -69,7 +93,7 @@ export default function Stack() {
     <section className="stack-section" id="stack">
       <h2 className="section-title">Tech Stack</h2>
 
-      {techStacks.map((group) => (
+      {techStacks.map((group, index) => (
         <div key={group.category} className="stack-group">
           {/* 카테고리 제목 + Notion 링크 */}
           <h3 className="stack-category">
@@ -104,31 +128,24 @@ export default function Stack() {
           {/* 각 스택 카드 렌더링 */}
           <div className="stack-grid">
             {group.stacks.map((tech) => (
-              <div
-                className={`stack-card ${getLevelClass(tech.level)}`}
-                key={tech.name}
-              >
+              <div className={`stack-card ${getLevelClass(tech.level)}`} key={tech.name}>
                 <div className="card-default">
-                  <img
-                    src={getEggImage(tech.level)}
-                    alt="egg"
-                    className="egg-img"
-                  />
+                  <img src={getEggImage(tech.level)} alt="egg" className="egg-img" />
                   <div className="tech-name">{tech.name}</div>
                   <div className="tech-level">{tech.level}</div>
                 </div>
-
-                {/* 호버 시 상세 설명 표시 */}
                 <div className="card-description">{tech.desc}</div>
               </div>
             ))}
           </div>
 
-          {/* 숙련도 가이드 */}
-          <div className="level-guide">
-            <span className="level-tag level-medium">반숙</span> 기초 활용 가능&nbsp;&nbsp;
-            <span className="level-tag level-hard">완숙</span> 실무 레벨 숙련
-          </div>
+          {/* 숙련도 가이드 → 프론트엔드(첫 그룹)에만 표시 */}
+          {index === 0 && (
+            <div className="level-guide">
+              <span className="level-tag level-medium">반숙</span> 기초 활용 가능&nbsp;&nbsp;
+              <span className="level-tag level-hard">완숙</span> 실무 레벨 숙련
+            </div>
+          )}
         </div>
       ))}
     </section>
