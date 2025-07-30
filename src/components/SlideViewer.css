@@ -87,7 +87,7 @@
 
 @media (max-width: 465px) {
   .close-btn {
-    top: 20rem;
+    top: 1rem;
     right: 1.25rem;
     font-size: 1.6rem;
     width: 32px;

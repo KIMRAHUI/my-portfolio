@@ -93,7 +93,15 @@ export default function Stack() {
     <section className="stack-section" id="stack">
       <h2 className="section-title">Tech Stack</h2>
 
-      {techStacks.map((group, index) => (
+      {/* 숙련도 가이드를 우측 정렬 */}
+      <div className="level-guide-wrapper">
+        <div className="level-guide">
+          <span className="level-tag level-medium">반숙</span> 기초 활용 가능&nbsp;&nbsp;
+          <span className="level-tag level-hard">완숙</span> 실무 레벨 숙련
+        </div>
+      </div>
+
+      {techStacks.map((group) => (
         <div key={group.category} className="stack-group">
           {/* 카테고리 제목 + Notion 링크 */}
           <h3 className="stack-category">
@@ -138,14 +146,6 @@ export default function Stack() {
               </div>
             ))}
           </div>
-
-          {/* 숙련도 가이드 → 프론트엔드(첫 그룹)에만 표시 */}
-          {index === 0 && (
-            <div className="level-guide">
-              <span className="level-tag level-medium">반숙</span> 기초 활용 가능&nbsp;&nbsp;
-              <span className="level-tag level-hard">완숙</span> 실무 레벨 숙련
-            </div>
-          )}
         </div>
       ))}
     </section>
